@@ -1,6 +1,6 @@
 const db = [];
 const artista = require('./artista.js');
-const nextId = 1;
+let nextId = 1;
 
 const model = (genero, id = nextId++) => {
     

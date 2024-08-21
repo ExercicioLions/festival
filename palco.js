@@ -1,13 +1,12 @@
 const db = [];
 
-const nextId = 1;
+let nextId = 1;
 
 const model = (palco, id = nextId++) => {
     if(palco.nome != undefined && palco.nome != '') {
     return {
         id,
-        palco: palco.nome,
-
+        palco: palco.nome
     }
   }
 };

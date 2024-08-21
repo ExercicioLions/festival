@@ -1,27 +1,19 @@
 const db = [];
 const palco = require('./palco.js');
-const nextId = 1;
+let nextId = 1;
 
 const model = (artista, id = nextId++) => {
-    
-    if(palco.index()){
-        return 200
-    } else {
         if(
-            artista.palco != undefined && 
             artista.nome != undefined && 
-            artista.palco != "" && 
             artista.nome != "" &&
             palco.show (id_palco)
         ) {
         return {
             id,
             artista: body.nome,
-            artista: body.palco,
             id_palco
             }
         }
-    }
 };
 
 const store = body => {
