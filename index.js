@@ -9,6 +9,12 @@ const brinquedo= require('./crud-brinq.js')
 const funcionario= require('./crud-func.js')
 const patrocinio= require('./crud-patro.js')
 
+const artista= require('./artista.js')
+const palco= require('./palco.js')
+const genero= require('./genero.js')
+
+
+
 
 app.use(express.json())
 
@@ -119,6 +125,61 @@ app.delete("/funcionarios/:id", (req,res) => {
 })
 app.delete("/patrocinadores/:id", (req,res) => {
     const code = patrocinio.destroy(req.params.id)
+    res.status(code).json()
+})
+
+app.get("/artista", (req, res) => {
+    const content = artista.index()
+    res.json(content)
+})
+
+app.get("/palco", (req, res) => {
+    const content = palco.index()
+    res.json(content)
+})
+
+app.get("/genero", (req, res) => {
+    const content = genero.index()
+    res.json(content)
+})
+
+app.post("/artista", (req,res)=>{
+    const code = artista.store(req.body)
+    res.status(code).json()
+})
+
+app.post("/palco", (req,res)=>{
+    const code = palco.store(req.body)
+    res.status(code).json()
+})
+app.post("/genero", (req,res)=>{
+    const code = genero.store(req.body)
+    res.status(code).json()
+})
+
+app.put("/artista/:id", (req, res)=>{
+    const code = artista.update(req.params.id, req.body)
+    res.status(code).json()
+})
+app.put("/palco/:id", (req, res)=>{
+    const code = palco.update(req.params.id, req.body)
+    res.status(code).json()
+})
+app.put("/genero/:id", (req, res)=>{
+    const code = horario.update(req.params.id, req.body)
+    res.status(code).json()
+})
+
+app.delete("/artista/:id", (req,res) => {
+    const code = artista.destroy(req.params.id)
+    res.status(code).json()
+})
+app.delete("/palco/:id", (req,res) => {
+    const code = palco.destroy(req.params.id)
+    res.status(code).json()
+})
+app.delete("/genero/:id", (req,res) => {
+    const code = genero.destroy(req.params.id)
     res.status(code).json()
 })
 
