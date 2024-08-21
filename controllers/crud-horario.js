@@ -1,0 +1,1 @@
+const artista = require("./.js");
