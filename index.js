@@ -5,6 +5,9 @@ const bebida= require('./controllers/crud-bebida.js')
 const comida= require('./controllers/crud-comida.js')
 const horario= require('./controllers/crud-horario.js')
 
+const brinquedo= require('./crud-brinq.js')
+const funcionario= require('./crud-func.js')
+const patrocinio= require('./crud-patro.js')
 
 
 app.use(express.json())
@@ -61,6 +64,61 @@ app.delete("/bebidas/:id", (req,res) => {
 })
 app.delete("/horario/:id", (req,res) => {
     const code = horario.destroy(req.params.id)
+    res.status(code).json()
+})
+
+app.get("/brinquedos", (req, res) => {
+    const content = brinquedo.index()
+    res.json(content)
+})
+
+app.get("/funcionarios", (req, res) => {
+    const content = funcionario.index()
+    res.json(content)
+})
+
+app.get("/patrocinadores", (req, res) => {
+    const content = patrocinio.index()
+    res.json(content)
+})
+
+app.post("/brinquedos", (req,res)=>{
+    const code = brinquedo.store(req.body)
+    res.status(code).json()
+})
+
+app.post("/funcionarios", (req,res)=>{
+    const code = funcionario.store(req.body)
+    res.status(code).json()
+})
+app.post("/patrocinadores", (req,res)=>{
+    const code = patrocinio.store(req.body)
+    res.status(code).json()
+})
+
+app.put("/brinquedos/:id", (req, res)=>{
+    const code = brinquedo.update(req.params.id, req.body)
+    res.status(code).json()
+})
+app.put("/funcinarios/:id", (req, res)=>{
+    const code = funcionario.update(req.params.id, req.body)
+    res.status(code).json()
+})
+app.put("/patrocinadores/:id", (req, res)=>{
+    const code = patrocinio.update(req.params.id, req.body)
+    res.status(code).json()
+})
+
+app.delete("/brinquedos/:id", (req,res) => {
+    const code = brinquedo.destroy(req.params.id)
+    res.status(code).json()
+})
+app.delete("/funcionarios/:id", (req,res) => {
+    const code = funcionario.destroy(req.params.id)
+    res.status(code).json()
+})
+app.delete("/patrocinadores/:id", (req,res) => {
+    const code = patrocinio.destroy(req.params.id)
     res.status(code).json()
 })
 
